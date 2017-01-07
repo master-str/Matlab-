@@ -1,0 +1,44 @@
+%lakhdar@TR
+%2017-01-07 universite amar telidji
+%%%%%%%%%%%%%%%%%%%%%%% Bruit impulsionnel image colorée %%%%%%%%%%%%%%%%
+
+clc
+clear all
+close all
+
+a=imread('imgae.jpg');
+a1=a(:,:,1);
+a2=a(:,:,2);
+a3=a(:,:,3);
+[l,m]=size(a1);
+
+%%%%%%%%%%%%%%%%%%%%% code bruit impulsionnel%%%%%%%%
+
+for i=1 :0.4*l
+    for j=1 :0.4*m
+        r1=randi(l,1);
+        r2=randi(m,1);
+        a1(r1,r2)=255;
+        a2(r1,r2)=255;
+        a3(r1,r2)=255;
+    end
+end
+for i=1 :0.1*l
+    for j=1 :0.1*m
+        r1=randi(l,1);
+        r2=randi(m,1);
+        a1(r1,r2)=0;
+        a2(r1,r2)=0;
+        a3(r1,r2)=0;
+    end
+end
+
+o(:,:,1)=a1;
+o(:,:,2)=a2;
+o(:,:,3)=a3;
+figure(1);imshow(o)
+
+%%%%%%%%%%%%%%%%%%%%%commande bruit impulsionnel in matlab %%%%%%%%
+
+h=IMNOISE(a,'salt & pepper',0.02);
+figure(2);imshow(h)
