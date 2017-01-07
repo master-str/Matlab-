@@ -1,0 +1,28 @@
+%%%%%%%%%%%%%%%%%%%%%%%% image biner %%%%%%%%%%%%%%%%%%%%%
+
+clc
+clear all
+close all
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% read image
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+a=imread('images.jpg');
+f=rgb2gray(a);
+c=imhist(f); % histogram
+b=[];
+[m,l]=size(f);
+sel=150; % avec histogram
+%%%%%%%%%code image biner%%%%%%%%%
+for i=1:m
+    for j=1:l
+       if f(i,j)>sel
+           b(i,j)=1;
+       else
+           b(i,j)=0;
+       end
+    end
+end
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+figure(1);plot(c)
+figure(2);imshow(f)
+figure(3);imshow(b)
